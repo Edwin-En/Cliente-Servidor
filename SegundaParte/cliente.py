@@ -7,7 +7,7 @@ import json
 
 def Enviar():
 
-    archivo = open("prueba.txt" , "rb")
+    archivo = open("/home/utp/Descargas/SegundaParte/CarpetaCliente/prueba.txt" , "rb")
     contenido = archivo.read(1024)
     while contenido:                               # Recibe por teclado y guarda en la variable "x"
         socket.send(contenido)                           # hace el send (envia) envia un mensaje
@@ -18,7 +18,7 @@ def Enviar():
     mensajeentrante = socket.recv_string()
 
 def Recibir():
-    archivorecibido = open("archivorecibidocliente", "wb")
+    archivorecibido = open("/home/utp/Descargas/SegundaParte/CarpetaCliente/ArchivoRecibidoCliente.txt", "wb")
     socket.send_string("ok")
     data = socket.recv(1024)
     archivorecibido.write(data)

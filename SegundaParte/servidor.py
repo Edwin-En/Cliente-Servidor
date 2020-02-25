@@ -8,7 +8,7 @@ import json
 def Recibir():
     #if os.path.exists("CarpetaServidor"):
     #carpeta = os.mkdir("CarpetaServidor")
-    archivorecibido = open("/home/utp/Descargas/arq/CarpetaServidor/archivorecibido", "wb")
+    archivorecibido = open("/home/utp/Descargas/SegundaParte/CarpetaServidor/ArchivoRecibido.txt", "wb")
     data = socket.recv(1024)
     archivorecibido.write(data)
 
@@ -22,7 +22,7 @@ def Recibir():
 def Enviar():
 
 
-    archivo = open("prueba.txt" , "rb")
+    archivo = open("/home/utp/Descargas/SegundaParte/CarpetaServidor/prueba.txt" , "rb")
     contenido = archivo.read(1024)
     socket.recv_string()
     while contenido:                               # Recibe por teclado y guarda en la variable "x"
@@ -36,9 +36,15 @@ def Enviar():
 
 def Listar():
     socket.recv_string()
-    lista = os.listdir("/home/utp/Descargas/arq/CarpetaServidor")                  # Ruta especifica de la carpeta que desea listar
+    lista = os.listdir("/home/utp/Descargas/SegundaParte/CarpetaServidor")                  # Ruta especifica de la carpeta que desea listar
     listajson = json.dumps(lista)
     socket.send_string(listajson)
+
+#def Cerrar():
+#    socket.recv_string("Fin")
+#    print("Fin de la comunicacion del servidor")
+
+#    socket.close()
 
 if __name__ == "__main__":
     context = zmq.Context()
@@ -54,3 +60,5 @@ if __name__ == "__main__":
             Enviar()
         if mensaje == "3":
             Listar()
+        if mensaje == "4":
+            socket.close()

@@ -1,0 +1,9 @@
+Descripcion de avances:
+
+El servidor y el cliente se comunican activamente, por el lado del cliente se presenta un menu
+con las opciones de 1. Enviar archivo 2. Recibir archivo 3. Listar los archivos del servidor 4. Salir
+
+El servidor recibe un mensaje con el cual sabe cual de las 3 opciones desea el cliente.
+Una vez leida la opcion llama la funcion pertinente, si el caso es de Recibir archivos
+guarda los archivos en una carpeta llamada "CarpetaServidor", si la opcion vista desde el servidor es
+enviar archivos, el verifica que exista el archvivo dentro de la carpeta y lo envia al cliente.
